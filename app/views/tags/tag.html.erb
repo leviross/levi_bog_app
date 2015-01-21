@@ -1,0 +1,35 @@
+<%= render partial: 'shared/flash' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <h2>Featured Bog Creatures</h2>
+        <p>Hello, adventurer! Please click above to navigate around the Bog Adventure app. To view bog creatures, simply click the Creatures link above.</p>
+
+        <br>
+          <%= link_to 'Add a New Creature', new_creature_path, :class => 'btn btn-primary btn-lg' %>
+        <br>
+        <br>
+
+        <table class='table'>
+          <tr>
+            <td><b>Name</b></td>
+            <td><b>Description</b></td>
+            <td><b>Show me the $</b></td>
+            <td><b>Delete Creature</b></td>
+          </tr>
+          <% @creatures.each do |creature| %>
+          <tr>
+            <td><a href="/creatures/<%= creature.id %>"><%= creature.name %></a></td>
+            <td><%= creature.desc %></td>
+            <td><%= link_to 'Show', creature, :class => 'btn btn-primary btn-xs' %></td>
+            <td><%= link_to 'Edit', edit_creature_path(creature), :class => 'btn btn-primary btn-xs' %></td>
+            <td><%= link_to 'Delete', creature_path(creature),
+                method: :delete,
+                :class => 'btn btn-primary btn-xs'  %></td>
+          <% end %>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>

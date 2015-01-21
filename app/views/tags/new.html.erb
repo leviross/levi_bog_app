@@ -1,0 +1,24 @@
+<h2>Add a new Creature</h2>
+
+  <% if @tag.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tag.errors.count, "error") %> prohibited
+        this tag from being saved:
+      </h2>
+      <ul>
+        <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= bootstrap_form_for @tag do |f| %>
+    <%= f.text_field :name, :placeholder => "Tag Name" %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+
+
+  <%= link_to "Back", tags_path %>

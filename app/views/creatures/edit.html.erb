@@ -1,0 +1,27 @@
+<h1>Edit your Creature</h1>
+
+  <% if @creature.errors.any? %>
+    <div id="error-explanation">
+      <h2>
+        <%= pluralize(@creature.errors.count, "error" ) %> prohibited
+        this creature from being saved:
+      </h2>
+      <ul>
+        <% @creature.errors.full_message.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= bootstrap_form_for @creature do |f| %>
+    <%= f.text_field :name, :placeholder => "Creature Name" %>
+    <%= f.text_area :desc, :placeholder => "Describe your bog creature", class: "text-area" %>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+
+
+
+<%= link_to "Back", creatures_path %>
