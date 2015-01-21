@@ -15,6 +15,10 @@ class CreaturesController < ApplicationController
     @results = list.map do |photo|
       FlickRaw.url_s(photo)
     end
+
+    @response = RestClient.get 'http://www.reddit.com/search.json', {:params => {:q => @creature.name, :limit => 10}}
+    @response_object = JSON.parse(@response)
+    @reddit_posts = @response_object['data']['children']
   end
 
   def new
@@ -88,6 +92,5 @@ class CreaturesController < ApplicationController
     def locate_creature
       redirect_to '/404.html' unless  @creature = Creature.find_by_id(params[:id])
     end
-
 
 end

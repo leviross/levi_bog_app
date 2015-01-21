@@ -1,13 +1,13 @@
 
 <div class="container">
-
+  <div class="row">
     <div class="col-md-6">
       <h2>The creature you've selected is:</h2>
       <h4><strong>Name: </strong><%= @creature.name %><br>
       <strong>Description: </strong><%= @creature.desc %></h4>
       <h4>Tags:</h4>
         <% @creature.tags.each do |tag| %>
-            <h5><%= link_to tag.name, tag_path(tag.name) %></h5>
+            <h5><%= link_to tag.name, creatures_tag_path(tag.name) %></h5>
         <% end %>
 
       <br>
@@ -20,6 +20,12 @@
       <% end %>
 
     </div>
-
+  </div>
+  <div class="row">
+        <h4>Trending on Reddit!</h4>
+        <% @reddit_posts.each do |post|%>
+          <li><%= link_to post['data']['title'], "http://www.reddit.com#{post['data']['permalink']}", :target => "_blank"%></li>
+        <%end %>
+  </div>
 
 </div>

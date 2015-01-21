@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   # Example of regular route:
   resources :creatures, :tags
 
-  get 'creatures/tag/:tag' => 'tags#tag' #, as: :tag
+  get 'creatures/tag/:tag' => 'tags#tag', as: :creatures_tag
 
   # 404 error handling route
-  #get '*path', to: "application#not_found" # => redirect('/404.html')
+  #get '*path', to: "application#not_found" # => redirect('/404.html
+  get '*path', to: "application#not_found"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
