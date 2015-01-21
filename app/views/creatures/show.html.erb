@@ -7,7 +7,7 @@
       <strong>Description: </strong><%= @creature.desc %></h4>
       <h4>Tags:</h4>
         <% @creature.tags.each do |tag| %>
-            <h5><%= link_to tag.name, tag_path(tag.name) %></h5>
+            <h5><%= link_to tag.name, creatures_tag_path(tag.name) %></h5>
         <% end %>
 
       <br>

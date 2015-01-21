@@ -89,5 +89,4 @@ class CreaturesController < ApplicationController
       redirect_to '/404.html' unless  @creature = Creature.find_by_id(params[:id])
     end
 
-
 end
